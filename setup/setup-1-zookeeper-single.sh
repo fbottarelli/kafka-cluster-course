@@ -34,19 +34,22 @@ bin/zookeeper-server-start.sh config/zookeeper.properties
 # Start Zookeeper in the background
 bin/zookeeper-server-start.sh -daemon config/zookeeper.properties
 bin/zookeeper-shell.sh localhost:2181
-ls /
+ls / # it must return [zookeeper]
 # demonstrate the use of a 4 letter word
 echo "ruok" | nc localhost 2181 ; echo
 
-# Install Zookeeper boot scripts
-sudo nano /etc/init.d/zookeeper
+# Install Zookeeper boot scripts, copy the rows in zookeeper/zookeeper here to this fil
+sudo vi /etc/init.d/zookeeper # save it after
 sudo chmod +x /etc/init.d/zookeeper
-sudo chown root:root /etc/init.d/zookeeper
+sudo chown root:root /etc/init.d/zookeeper # chown [options] [owner][:[group]] file 
+# In this case, root:root specifies that the file's owner should be 
+# the root user and the group should also be root.
+
 # you can safely ignore the warning
 sudo update-rc.d zookeeper defaults
 # stop zookeeper
 sudo service zookeeper stop
-# verify it's stopped
+# verify it's stopped, sometime it take a while
 nc -vz localhost 2181
 # start zookeeper
 sudo service zookeeper start
