@@ -6,7 +6,7 @@ help
 # display root
 ls /
 create /my-node "foo"
-ls /
+ls / # we can see the new znode
 get /my-node
 get /zookeeper
 create /my-node/deeper-node "bar"
@@ -21,7 +21,7 @@ get /my-node/deeper-node
 rmr /my-node
 ls /
 # create a watcher
-create /node-to-watch ""
+create /node-to-watch "" # without data inside
 get /node-to-watch true
 set /node-to-watch "has-changed"
 rmr /node-to-watch
