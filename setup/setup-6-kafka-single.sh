@@ -5,19 +5,19 @@ echo "* hard nofile 100000
 * soft nofile 100000" | sudo tee --append /etc/security/limits.conf
 
 # reboot for the file limit to be taken into account
-sudo reboot
+sudo reboot # then redo login with SSH
 sudo service zookeeper start
-sudo chown -R ubuntu:ubuntu /data/kafka
+sudo chown -R ubuntu:ubuntu /data/kafka # after the mount done before for the kaf. cluster
 
 # edit kafka configuration
 rm config/server.properties
-nano config/server.properties
+vi config/server.properties # paste the proprieties in the kafka folder
 
 # launch kafka
 bin/kafka-server-start.sh config/server.properties
 
 # Install Kafka boot scripts
-sudo nano /etc/init.d/kafka
+sudo vi /etc/init.d/kafka # paste the kafka/kafka file
 sudo chmod +x /etc/init.d/kafka
 sudo chown root:root /etc/init.d/kafka
 # you can safely ignore the warning
