@@ -18,7 +18,7 @@ nano config/server.properties
 bin/kafka-server-start.sh config/server.properties
 
 # Install Kafka boot scripts
-sudo nano /etc/init.d/kafka
+sudo vi /etc/init.d/kafka # paste kafka/server.proprierties file
 sudo chmod +x /etc/init.d/kafka
 sudo chown root:root /etc/init.d/kafka
 # you can safely ignore the warning

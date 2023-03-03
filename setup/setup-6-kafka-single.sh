@@ -24,13 +24,13 @@ sudo chown root:root /etc/init.d/kafka
 sudo update-rc.d kafka defaults
 
 # start kafka
-sudo service kafka start
+sudo service kafka start # sudo service kafka status to check
 # verify it's working
 nc -vz localhost 9092
 # look at the server logs
 cat /home/ubuntu/kafka/logs/server.log
 
-
+# RUNNING KAFKA COMMANDS
 # create a topic
 bin/kafka-topics.sh --zookeeper zookeeper1:2181/kafka --create --topic first_topic --replication-factor 1 --partitions 3
 # produce data to the topic
